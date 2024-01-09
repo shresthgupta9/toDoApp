@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require('mongoose');
 const toDoModel = require('./models/model.js');
 require('dotenv').config();
-const port = process.env.port;
 
 // to send data b/w frontend and backend
 // https://www.youtube.com/watch?v=Vzn79HN8fgQ
@@ -74,8 +73,8 @@ app.delete('/:id', async (req, res) => {
 mongoose.connect(`${process.env.MDB_URL}`).then(() => {
     try {
         console.log("ConnecteD to MDB");
-        app.listen(port, () => {
-            console.log(`nodepr listening on port ${port}`)
+        app.listen(process.env.PORT, () => {
+            console.log(`nodepr listening on port ${process.env.PORT}`)
         })
     } catch (err) {
         console.log(err);
